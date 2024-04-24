@@ -4,15 +4,33 @@ module.exports = {
     toField: '#to',
     phoneNumberField: '#phone',
     codeField: '#code',
+    creditCardField: '#number',
+    creditCardCodeField: '.card-second-row #code',
+    driverMessageField: '#comment',
+
     // Buttons
     callATaxiButton: 'button=Call a taxi',
     phoneNumberButton: '//div[starts-with(text(), "Phone number")]',
     nextButton: 'button=Next',
     confirmButton: 'button=Confirm',
+    supportivePlanButton: 'div=Supportive',
+    paymentMethodButton: '.pp-text',
+    addCardButton: 'div=Add card', //".pp-plus-container",
+    linkButton: 'button=Link',
+    cardAdded: 'div=Card',
+    plusOneIceCreamButton: '.counter-plus',
+    blanketButton: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[2]',
+    blanketCheck: '.switch-input',
+    orderButton: 'button.smart-button',
+   
+
     // Modals
     phoneNumberModal: '.modal',
+    carSearchModal: '.order-body',
+
     // Functions
-    fillAddresses: async function(from, to) {
+    // Create a Function for an action that happens more than twice
+    fillAddresses: async function(from, to) { //Enters To and From adresses and then clicks on the Call a Taxi button
         const fromField = await $(this.fromField);
         await fromField.setValue(from);
         const toField = await $(this.toField);
@@ -31,7 +49,7 @@ module.exports = {
         await phoneNumberField.waitForDisplayed();
         await phoneNumberField.setValue(phoneNumber);
     },
-    submitPhoneNumber: async function(phoneNumber) {
+    submitPhoneNumber: async function(phoneNumber) { //Hints????
         await this.fillPhoneNumber(phoneNumber);
         // we are starting interception of request from the moment of method call
         await browser.setupInterceptor();
@@ -47,5 +65,10 @@ module.exports = {
         const code = await requests[0].response.body.code
         await codeField.setValue(code)
         await $(this.confirmButton).click()
+    },
+    selectSupportive: async function() {
+        const supportivePlanButton = await $(this.supportivePlanButton);
+        await supportivePlanButton.waitForDisplayed();
+        await supportivePlanButton.click();
     },
 };

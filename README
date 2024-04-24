@@ -1,0 +1,11 @@
+Project 8 README
+
+This project it a test suite of 8 tests for the web application "Uraban Routes"
+
+The tests are created in JavaScript and WDIO using VSCode
+The main tests are within the "createAnOrder.e3e.js" file.
+Functions and many variables are stored in the "page.js" file.
+
+--Usage--
+Generate a new server URL and paste it into the "baseUrl:" field
+Open a terminal within the project folder and run the command "npm run wdio"
