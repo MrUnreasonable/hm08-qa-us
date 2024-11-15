@@ -1,6 +1,6 @@
 Project 8 README
 
-This project it a test suite of 8 tests for the web application "Uraban Routes"
+This project it a test suite of 8 tests for the web application "Urban Routes"
 
 The tests are created in JavaScript and WDIO using VSCode
 The main tests are within the "createAnOrder.e3e.js" file.
